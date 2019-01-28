@@ -19,12 +19,10 @@ public class ToDoList {
 		try {
 			tasks = new ArrayList<String>();
 			BufferedReader br = new BufferedReader(new FileReader(STORE_LAST));
-			if (br.readLine() != null)
-				list = br.readLine();
-			else
+			list = br.readLine();
+			if (list == null)
 				list = "src/_03_To_Do_List/list.txt";
 			br.close();
-			System.out.println(list);
 			BufferedReader r = new BufferedReader(new FileReader(list));
 			String line = r.readLine();
 			while (line != null) {
@@ -118,6 +116,7 @@ public class ToDoList {
 		try {
 			FileWriter w = new FileWriter(STORE_LAST);
 			w.write(list);
+			w.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
