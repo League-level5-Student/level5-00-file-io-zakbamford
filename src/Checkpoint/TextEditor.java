@@ -33,8 +33,8 @@ public class TextEditor {
 			FileWriter fw;
 			try {
 				fw = new FileWriter(JOptionPane.showInputDialog("Enter the file name to save to."));
-				System.out.println(text.getText());
 				fw.write(text.getText());
+				fw.close();
 			} catch (HeadlessException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
@@ -49,11 +49,11 @@ public class TextEditor {
 				String line = "";
 				try {
 					while (line != null) {
+						s += "\n";
 						s += line;
 						line = br.readLine();
-						s += "\n";
 					}
-					text.setText(s);
+					text.setText(s.substring(2));
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
